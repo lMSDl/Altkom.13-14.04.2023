@@ -1,7 +1,9 @@
-﻿using ConsoleApp.Configuration.Models;
+﻿using ConsoleApp;
+using ConsoleApp.Configuration.Models;
 using ConsoleApp.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System.Security.Authentication.ExtendedProtection;
 
 var variable = Environment.GetEnvironmentVariable("enviroment_type");
@@ -46,30 +48,21 @@ serviceCollection.AddSingleton<AppConfig>(x =>
     return appConfig;
 });
 
+serviceCollection.AddLogging(options => options
+                                            .AddConfiguration(config.GetSection("Logging"))
+                                            //.SetMinimumLevel(LogLevel.Trace)
+                                            .AddConsole(/*x => x.IncludeScopes = true*/)
+                                            .AddDebug()
+                                            .AddEventLog());
+serviceCollection.AddSingleton<LoggerDemo>();
+
+
 IServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();
 
-//serviceProvider.GetService<IOutputService>().WriteLine("Ala ma kota");
 
-//foreach (var item in serviceProvider.GetServices<IOutputService>())
-var outputServices = serviceProvider.GetServices<IOutputService>().ToList();
-for (int i = 0; i < outputServices.Count(); i++)
-{
-    outputServices[i].WriteLine($"Ala ma kota: {i}");
-}
+serviceProvider.GetService<LoggerDemo>().Work();
 
 
-IServiceScope scope = null;
-for (int i = 0; i < 10; i++)
-{
-    if(i % 3 == 0)
-    {
-        scope?.Dispose();
-        scope = serviceProvider.CreateScope();
-    }    
-
-    scope.ServiceProvider.GetService<IOutputService>().WriteLine("Hello!");
-}
-scope.Dispose();
 
 
 
@@ -110,4 +103,30 @@ static void ConfigurationDemo(IConfigurationRoot config)
 
 
     Console.WriteLine(config["enviroment_type"]);
+}
+
+static void DiDemo(IServiceProvider serviceProvider)
+{
+    //serviceProvider.GetService<IOutputService>().WriteLine("Ala ma kota");
+
+    //foreach (var item in serviceProvider.GetServices<IOutputService>())
+    var outputServices = serviceProvider.GetServices<IOutputService>().ToList();
+    for (int i = 0; i < outputServices.Count(); i++)
+    {
+        outputServices[i].WriteLine($"Ala ma kota: {i}");
+    }
+
+
+    IServiceScope scope = null;
+    for (int i = 0; i < 10; i++)
+    {
+        if (i % 3 == 0)
+        {
+            scope?.Dispose();
+            scope = serviceProvider.CreateScope();
+        }
+
+        scope.ServiceProvider.GetService<IOutputService>().WriteLine("Hello!");
+    }
+    scope.Dispose();
 }

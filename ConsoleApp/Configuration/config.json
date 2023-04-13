@@ -12,5 +12,21 @@
   },
   "ConnectionStrings": {
     "myDB": "source=(local);Database=someDB;User id=sa"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "error"
+    },
+    "Console": {
+      "LogLevel": {
+        "Default": "trace"
+      },
+      "IncludeScopes":  true
+    },
+    "EventLog": {
+      "LogLevel": {
+        "Default": "debug"
+      }
+    }
   }
 }
