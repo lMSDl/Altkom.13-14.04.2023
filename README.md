@@ -33,3 +33,16 @@
     ```
     dotnet add reference <ŚCIEŻKA_PROJEKTU>
     ```
+* Pakiety i referencje
+    * Dodawanie pakietów
+    ```
+    dotnet add package <NAZWA_PAKIETU>
+    ```
+    * Pobranie pakietów
+    ```
+    dotnet restore
+    ```
+    * Dodawanie referencji
+    ```
+    dotnet add reference <ŚCIEŻKA_PROJEKTU>
+    ```
