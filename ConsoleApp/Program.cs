@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using ConsoleApp.Configuration.Models;
+using Microsoft.Extensions.Configuration;
 
 var config = new ConfigurationBuilder()
     //package Microsoft.Extensions.Configuration.FileExtensions
@@ -34,3 +35,13 @@ Console.WriteLine($"{greetingsSection["Greeting1"]} from {targetsSection["AI"]}"
 
 var connectionString = config.GetConnectionString("myDB");
 Console.WriteLine(connectionString);
+
+
+AppConfig appConfig = new();
+//Microsoft.Extensions.Configuration.Binder
+config.Bind(appConfig);
+
+
+//for (int i = 0, limit = appConfig.Repeat; i < limit; i++)
+for (int i = 0, limit = config.GetValue<int>("Repeat"); i < limit; i++)
+        Console.WriteLine($"{appConfig.Greetings.Greeting1} from {appConfig.Greetings.Targets.AI}");
