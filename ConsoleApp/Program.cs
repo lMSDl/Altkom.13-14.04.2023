@@ -39,17 +39,23 @@ serviceCollection.AddScoped<IFontService, TengwarFontService>();
 //Transient - zawsze nowa instancja
 serviceCollection.AddTransient<IOutputService, RandomFontConsoleOutputService>();
 
+serviceCollection.AddSingleton<AppConfig>(x =>
+{
+    var appConfig = new AppConfig();
+    config.Bind(appConfig);
+    return appConfig;
+});
 
 IServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();
 
 //serviceProvider.GetService<IOutputService>().WriteLine("Ala ma kota");
 
 //foreach (var item in serviceProvider.GetServices<IOutputService>())
-/*var outputServices = serviceProvider.GetServices<IOutputService>().ToList();
+var outputServices = serviceProvider.GetServices<IOutputService>().ToList();
 for (int i = 0; i < outputServices.Count(); i++)
 {
     outputServices[i].WriteLine($"Ala ma kota: {i}");
-}*/
+}
 
 
 IServiceScope scope = null;
