@@ -1,1 +1,6 @@
 HelloYaml: Yaml
+
+Greetings:
+ Greeting2: WELCOME
+ Targets:
+  AI: Siri

@@ -12,7 +12,7 @@ var config = new ConfigurationBuilder()
     .AddYamlFile("Configuration\\config.yaml")
     .Build();
 
-for (int i = 0, limit = int.Parse(config["Repeat"]); i < limit; i++)
+//for (int i = 0, limit = int.Parse(config["Repeat"]); i < limit; i++)
 {
     Console.WriteLine($"Hello from {config["HelloJson"]}");
     Console.WriteLine($"Hello from {config["HelloXml"]}");
@@ -23,3 +23,14 @@ for (int i = 0, limit = int.Parse(config["Repeat"]); i < limit; i++)
 
     Thread.Sleep(1000);
 }
+
+Console.WriteLine($"{config["Greetings:Greeting1"]} from {config["Greetings:Targets:AI"]}");
+
+var greetingsSection = config.GetSection("Greetings");
+var targetsSection = greetingsSection.GetSection("Targets");
+//var targetsSection = config.GetSection("Greetings:Targets");
+
+Console.WriteLine($"{greetingsSection["Greeting1"]} from {targetsSection["AI"]}");
+
+var connectionString = config.GetConnectionString("myDB");
+Console.WriteLine(connectionString);

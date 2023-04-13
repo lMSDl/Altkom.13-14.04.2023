@@ -1,4 +1,16 @@
 {
   "Bye": "BYE",
-  "HelloJson": "Json"
+  "HelloJson": "Json",
+  "Greetings": {
+    "Greeting1": "Hello",
+    "Greeting2": "Hi",
+
+    "Targets": {
+      "Person": "Tom",
+      "AI": "Alexa"
+    }
+  },
+  "ConnectionStrings": {
+    "myDB": "source=(local);Database=someDB;User id=sa"
+  }
 }
