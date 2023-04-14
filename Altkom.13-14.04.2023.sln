@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationV6", "WebAppl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationV5", "WebApplicationV5\WebApplicationV5.csproj", "{517EA14B-49C0-4753-84BC-89B1B4A4C454}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Routing", "WebApplication.Routing\WebApplication.Routing.csproj", "{2AE2917F-873A-45F5-AA8F-3874FA8BE0B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{517EA14B-49C0-4753-84BC-89B1B4A4C454}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{517EA14B-49C0-4753-84BC-89B1B4A4C454}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{517EA14B-49C0-4753-84BC-89B1B4A4C454}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AE2917F-873A-45F5-AA8F-3874FA8BE0B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AE2917F-873A-45F5-AA8F-3874FA8BE0B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AE2917F-873A-45F5-AA8F-3874FA8BE0B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AE2917F-873A-45F5-AA8F-3874FA8BE0B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
